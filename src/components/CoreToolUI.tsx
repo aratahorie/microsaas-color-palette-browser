@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import siteConfig from '../siteConfig';
+import { siteConfig } from '@/lib/config';
 
 const CoreToolUI = () => {
   const [input, setInput] = useState('');
@@ -28,7 +28,7 @@ const CoreToolUI = () => {
       const data = await response.json();
       setResult(data.result);
     } catch (err) {
-      setError(err.message);
+      setError((err as Error).message);
     } finally {
       setLoading(false);
     }
@@ -36,8 +36,8 @@ const CoreToolUI = () => {
 
   return (
     <div className="p-4 bg-white/5 border border-white/10 rounded-md text-white">
-      <h1 className="text-xl font-bold mb-4">{siteConfig.core.toolName}</h1>
-      <p className="mb-4">{siteConfig.core.description}</p>
+      <h1 className="text-xl font-bold mb-4">{siteConfig.name}</h1>
+      <p className="mb-4">{siteConfig.description}</p>
       <div className="mb-4">
         <label className="block mb-2">{siteConfig.core.inputLabel}</label>
         <textarea

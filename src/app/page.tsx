@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import siteConfig from '@/config/siteConfig';
+import { siteConfig } from '@/lib/config';
 
 export const dynamic = "force-dynamic";
 
@@ -13,7 +13,7 @@ const Page = () => {
       <main className="container mx-auto px-4 py-16">
         {/* Hero Section */}
         <section className="text-center mb-16">
-          <h1 className="text-4xl font-bold mb-4">{siteConfig.toolName}</h1>
+          <h1 className="text-4xl font-bold mb-4">{siteConfig.name}</h1>
           <p className="text-xl mb-8">{siteConfig.description}</p>
           <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             Discover Your Perfect Palette

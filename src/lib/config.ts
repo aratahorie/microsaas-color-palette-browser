@@ -29,7 +29,7 @@ export const siteConfig = {
   },
   core: {
     model: "default",
-    systemPrompt: null,
+    systemPrompt: "あなたはカラーパレットの専門家です。ユーザーが入力した色コードや色の説明に基づいて、最適なカラーパレットを提案してください。",
     inputPlaceholder: "色コードを入力してください",
     inputLabel: "色コード",
     outputLabel: "プレビュー"
