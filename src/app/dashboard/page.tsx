@@ -1,4 +1,3 @@
-import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { siteConfig } from "@/lib/config";
 import Header from "@/components/Header";
@@ -15,10 +14,6 @@ export default async function DashboardPage() {
         data: { user },
     } = await supabase.auth.getUser();
 
-    if (!user) {
-        redirect("/");
-    }
-
     return (
         <div className="min-h-screen bg-gradient-to-b from-gray-950 via-gray-900 to-black text-white flex flex-col">
             <Header />
@@ -28,6 +23,14 @@ export default async function DashboardPage() {
                     <p className="text-gray-400 text-sm mt-1">{siteConfig.description}</p>
                 </div>
                 <CoreToolUI />
+                {!user && (
+                    <div className="mt-8 p-4 rounded-xl bg-blue-500/10 border border-blue-500/20 text-center">
+                        <p className="text-blue-300 text-sm">
+                            💡 ログインすると1日{siteConfig.pricing.freeUsageLimit}回まで無料で使えます。
+                            Proプランなら無制限。
+                        </p>
+                    </div>
+                )}
             </main>
             <Footer />
         </div>
